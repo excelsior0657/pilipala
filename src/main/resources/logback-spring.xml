@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 控制台输出配置 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %red(%d{yyyy-MM-dd HH:mm:ss}) %green([%thread]) %highlight(%-5level) %boldMagenta(%logger{10}) : %cyan(%msg%n)
+            </pattern>
+        </encoder>
+    </appender>
+    <!-- 文件输出配置 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 文件保存路径 -->
+            <fileNamePattern>E:/workspace/pilipala-file/log/log.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 最多保存 60 天 -->
+            <maxHistory>60</maxHistory>
+            <!-- 启动时清除历史日志 -->
+            <cleanHistoryOnStart>false</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder>
+            <pattern>
+                    %red(%d{yyyy-MM-dd HH:mm:ss}) %green([%thread]) %highlight(%-5level) %boldMagenta(%logger{10}) : %cyan(%msg%n)
+            </pattern>
+        </encoder>
+    </appender>
+    <!-- 配置日志等级 -->
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
