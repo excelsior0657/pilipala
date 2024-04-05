@@ -21,4 +21,8 @@ public class TestController {
 
         throw new BusinessException("测试异常信息", StandardResponse.ERROR);
     }
+
+    public void test(){
+        System.out.println("这是测试方法");
+    }
 }

@@ -2,7 +2,7 @@ package com.ss.pilipala.advice;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ss.pilipala.utils.JsonUtil;
 import com.ss.pilipala.utils.RequestUtil;
 import com.ss.pilipala.utils.models.ExceptionInfo;
 import com.ss.pilipala.utils.models.LogModel;
@@ -27,11 +27,9 @@ import java.util.Objects;
 @Component
 public class ApiLoggerAspect {
     private final HttpServletRequest request;
-    private final ObjectMapper mapper;
 
-    public ApiLoggerAspect(HttpServletRequest request, ObjectMapper mapper) {
+    public ApiLoggerAspect(HttpServletRequest request) {
         this.request = request;
-        this.mapper = mapper;
     }
 
     /**
@@ -55,7 +53,7 @@ public class ApiLoggerAspect {
         logModel.setResponse(result)
                 .setTimestamp(start)
                 .setCost(end - start);
-        String json = mapper.writeValueAsString(logModel);
+        String json = JsonUtil.toJson(logModel);
         log.info(json);
 
         return result;
@@ -90,7 +88,7 @@ public class ApiLoggerAspect {
         logModel.setException(exceptionInfo)
                 .setTimestamp(start)
                 .setCost(end - start);
-        String json = mapper.writeValueAsString(logModel);
+        String json = JsonUtil.toJson(logModel);
         log.info(json);
     }
 

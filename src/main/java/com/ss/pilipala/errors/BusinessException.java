@@ -1,5 +1,6 @@
 package com.ss.pilipala.errors;
 
+import com.ss.pilipala.enums.StandardResponse;
 import com.ss.pilipala.interfaces.IResponse;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -31,6 +32,10 @@ public class BusinessException extends RuntimeException implements IResponse {
         this.code = response.getCode();
         this.message = MessageFormat.format(super.getMessage(), args);
         this.response = response;
+    }
+
+    public static BusinessException businessError(String msg){
+        return new BusinessException(msg, StandardResponse.ERROR);
     }
 
     @Override
