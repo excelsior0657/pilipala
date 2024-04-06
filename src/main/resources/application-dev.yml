@@ -1,2 +1,10 @@
 server:
   port: 8080
+
+rate-limit:
+  max-request-count: 10
+spring:
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
