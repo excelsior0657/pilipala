@@ -3,3 +3,10 @@ spring:
     active: @activatedProperties@
 logging:
   config: classpath:logback-spring.xml
+
+sms:
+  access-key: kmXLdedknjgdfnldslsdghlgdfkghLC7H
+  access-secret: vckadsfgdfgfggdfdrduG7KF
+  signature: 噼里啪啦
+  template-mapping:
+    verify-code: pub_verif_login_ttl

@@ -2,9 +2,21 @@ server:
   port: 8080
 
 rate-limit:
-  max-request-count: 10
+  max-request-count: 100
 spring:
   data:
     redis:
       host: 127.0.0.1
       port: 6379
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.ss.pilipala.controller
